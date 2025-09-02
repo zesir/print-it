@@ -35,6 +35,16 @@ rightArrow.addEventListener("click", () => {
   const slide = slides[currentSlide];
   bannerImage.src = `assets/images/slideshow/${slide.image}`;
   bannerTagLine.innerHTML = slide.tagLine;
+
+  // mettre à jour les dots
+  const dots = document.querySelectorAll(".dot");
+  dots.forEach((dot, index) => {
+    if (index === currentSlide) {
+      dot.classList.add("dot_selected");
+    } else {
+      dot.classList.remove("dot_selected");
+    }
+  });
 });
 
 leftArrow.addEventListener("click", () => {
@@ -45,4 +55,14 @@ leftArrow.addEventListener("click", () => {
   const slide = slides[currentSlide];
   bannerImage.src = `assets/images/slideshow/${slide.image}`;
   bannerTagLine.innerHTML = slide.tagLine;
+
+  // mettre à jour les dots
+  const dots = document.querySelectorAll(".dot");
+  dots.forEach((dot, index) => {
+    if (index === currentSlide) {
+      dot.classList.add("dot_selected");
+    } else {
+      dot.classList.remove("dot_selected");
+    }
+  });
 });
