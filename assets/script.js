@@ -20,13 +20,29 @@ const slides = [
 
 console.log(slides);
 
+const bannerImage = document.querySelector("#banner img");
+const bannerTagLine = document.getElementById("banner-tagline");
 const leftArrow = document.querySelector(".arrow_left");
 const rightArrow = document.querySelector(".arrow_right");
 
+let currentSlide = 0;
+
 rightArrow.addEventListener("click", () => {
   console.log("clic droit");
+  currentSlide++;
+
+  // mettre à jour l'image
+  const slide = slides[currentSlide];
+  bannerImage.src = `assets/images/slideshow/${slide.image}`;
+  bannerTagLine.innerHTML = slide.tagLine;
 });
 
 leftArrow.addEventListener("click", () => {
   console.log("clic gauche");
+  currentSlide--;
+
+  // mettre à jour l'image
+  const slide = slides[currentSlide];
+  bannerImage.src = `assets/images/slideshow/${slide.image}`;
+  bannerTagLine.innerHTML = slide.tagLine;
 });
