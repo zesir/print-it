@@ -30,6 +30,9 @@ let currentSlide = 0;
 rightArrow.addEventListener("click", () => {
   console.log("clic droit");
   currentSlide++;
+  if (currentSlide >= slides.length) {
+    currentSlide = 0; // repart au début
+  }
 
   // mettre à jour l'image
   const slide = slides[currentSlide];
@@ -50,7 +53,9 @@ rightArrow.addEventListener("click", () => {
 leftArrow.addEventListener("click", () => {
   console.log("clic gauche");
   currentSlide--;
-
+  if (currentSlide < 0) {
+    currentSlide = slides.length - 1; // repart à la fin
+  }
   // mettre à jour l'image
   const slide = slides[currentSlide];
   bannerImage.src = `assets/images/slideshow/${slide.image}`;
