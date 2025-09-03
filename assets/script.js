@@ -27,19 +27,16 @@ const rightArrow = document.querySelector(".arrow_right");
 
 let currentSlide = 0;
 
-rightArrow.addEventListener("click", () => {
-  console.log("clic droit");
-  currentSlide++;
-  if (currentSlide >= slides.length) {
-    currentSlide = 0; // repart au début
-  }
-
-  // mettre à jour l'image
+// mettre à jour l'image
+function updateBanner() {
   const slide = slides[currentSlide];
   bannerImage.src = `assets/images/slideshow/${slide.image}`;
   bannerTagLine.innerHTML = slide.tagLine;
+  updateDots();
+}
 
-  // mettre à jour les dots
+// mettre à jour les dots
+function updateDots() {
   const dots = document.querySelectorAll(".dot");
   dots.forEach((dot, index) => {
     if (index === currentSlide) {
@@ -48,6 +45,16 @@ rightArrow.addEventListener("click", () => {
       dot.classList.remove("dot_selected");
     }
   });
+}
+
+rightArrow.addEventListener("click", () => {
+  console.log("clic droit");
+  currentSlide++;
+  if (currentSlide >= slides.length) {
+    currentSlide = 0; // repart au début
+  }
+  console.log("currentSlide:", currentSlide);
+  updateBanner();
 });
 
 leftArrow.addEventListener("click", () => {
@@ -56,18 +63,6 @@ leftArrow.addEventListener("click", () => {
   if (currentSlide < 0) {
     currentSlide = slides.length - 1; // repart à la fin
   }
-  // mettre à jour l'image
-  const slide = slides[currentSlide];
-  bannerImage.src = `assets/images/slideshow/${slide.image}`;
-  bannerTagLine.innerHTML = slide.tagLine;
-
-  // mettre à jour les dots
-  const dots = document.querySelectorAll(".dot");
-  dots.forEach((dot, index) => {
-    if (index === currentSlide) {
-      dot.classList.add("dot_selected");
-    } else {
-      dot.classList.remove("dot_selected");
-    }
-  });
+  console.log("currentSlide:", currentSlide);
+  updateBanner();
 });
